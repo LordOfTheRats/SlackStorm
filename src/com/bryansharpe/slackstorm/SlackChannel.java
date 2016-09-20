@@ -75,6 +75,10 @@ public class SlackChannel {
     }
 
     public String getUrl() {
-        return "https://hooks.slack.com/services/" + this.token;
+        if (this.token.startsWith('http://') || this.token.startsWith('https://')) {
+            return this.token;
+        } else {
+            return "https://hooks.slack.com/services/" + this.token;
+        }
     }
 }
